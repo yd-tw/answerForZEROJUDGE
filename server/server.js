@@ -160,7 +160,9 @@ app.post("/api/detail",(req,res)=>{
     }
 });
 
-// ✅ 啟動後端（最後一行）
+export default app;
+/*
 app.listen(3000, () => {
     console.log("✅ Server running at http://localhost:3000");
 });
+*/
