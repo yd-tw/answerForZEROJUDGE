@@ -160,6 +160,7 @@ app.post("/api/detail",(req,res)=>{
     }
 });
 
+import app from "./server.js";
 export default app;
 /*
 app.listen(3000, () => {
