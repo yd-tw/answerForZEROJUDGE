@@ -9,7 +9,7 @@ const __dirname = path.dirname(__filename);
 
 // 1️⃣ 透過環境變數取得 Firebase 憑證
 // 在 Vercel 的「Environment Variables」設定中，新增一個名為 FIREBASE_KEY 的變數，內容放完整 JSON
-const serviceAccount = JSON.parse(process.env.FIREBASE_KEY);
+const serviceAccount = process.env.FIREBASE_KEY;
 
 
 admin.initializeApp({
