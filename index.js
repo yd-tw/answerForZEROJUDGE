@@ -1,7 +1,6 @@
 import express from "express";
 import cors from "cors";
 import admin from "firebase-admin";
-import fs from "fs";
 import { fileURLToPath } from "url";
 import path from "path";
 import dotenv from "dotenv";
