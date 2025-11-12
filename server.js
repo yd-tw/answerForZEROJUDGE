@@ -1,19 +1,17 @@
 import express from "express";
 import cors from "cors";
 import admin from "firebase-admin";
+import fs from "fs";
 import { fileURLToPath } from "url";
 import path from "path";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// 1️⃣ 透過環境變數取得 Firebase 憑證
-// 在 Vercel 的「Environment Variables」設定中，新增一個名為 FIREBASE_KEY 的變數，內容放完整 JSON
-const serviceAccount = JSON.parse(process.env.FIREBASE_KEY);
-
+const key = JSON.parse(fs.readFileSync("./firebaseKey.json", "utf8"));
 
 admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount)
+    credential: admin.credential.cert(key)
 });
 
 const db = admin.firestore();
@@ -162,9 +160,6 @@ app.post("/api/detail",(req,res)=>{
     }
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`✅ Server running at http://localhost:${PORT}`);
+app.listen(3000, () => {
+    console.log("✅ Server running at http://localhost:3000");
 });
-
-export default app;
