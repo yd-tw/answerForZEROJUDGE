@@ -4,14 +4,21 @@ import admin from "firebase-admin";
 import fs from "fs";
 import { fileURLToPath } from "url";
 import path from "path";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const key = JSON.parse(fs.readFileSync("./firebaseKey.json", "utf8"));
+const firebaseConfig = {
+  projectId: process.env.FIREBASE_PROJECT_ID,
+  clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
+  privateKey: process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, "\n"),
+};
 
 admin.initializeApp({
-    credential: admin.credential.cert(key)
+    credential: admin.credential.cert(firebaseConfig)
 });
 
 const db = admin.firestore();
@@ -160,6 +167,7 @@ app.post("/api/detail",(req,res)=>{
     }
 });
 
-app.listen(3000, () => {
-    console.log("✅ Server running at http://localhost:3000");
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`✅ Server running at http://localhost:${PORT}`);
 });
