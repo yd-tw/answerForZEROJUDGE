@@ -2,9 +2,9 @@
   "name": "for_zj_dtb",
   "version": "1.0.0",
   "description": "for zerojudge data base",
-  "main": "index.js",
-   "scripts": {
-    "build": "[my-framework] build --output public"
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
