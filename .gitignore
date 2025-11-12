@@ -1,0 +1,16 @@
+# === Private files ===
+server/firebaseKey.json
+solution_for_problems/
+
+# === Node modules ===
+node_modules/
+server/node_modules/
+
+# === Editor / System files ===
+.vscode/
+.DS_Store
+Thumbs.db
+tempCodeRunnerFile.js
+
+# === Logs ===
+*.log
